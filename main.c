@@ -17,7 +17,7 @@
 #include <string.h>
 #include <arpa/inet.h>
 
-#define PORT 8082
+#define PORT 8085
 
 GtkWidget *window;
 GtkWidget *fixed1;
@@ -25,15 +25,19 @@ GtkWidget *loginEntry;
 GtkWidget *passwordEntry;
 GtkBuilder *builder;
 
+GtkWidget *err;
+
 GtkWidget *waiterWindow;
+
+
+char login[128], password[128];
+char server_message[1900];
 
 
 int sock;
 
 // login window
 int main(int argc, char *argv[]){
-
-
 
 
 /*
@@ -89,7 +93,7 @@ int main(int argc, char *argv[]){
 
 	gtk_init(&argc, &argv);
 
-	builder = gtk_builder_new_from_file("login.glade");
+	builder = gtk_builder_new_from_file("glade/login.glade");
 
 	window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
 
@@ -100,7 +104,8 @@ int main(int argc, char *argv[]){
 	fixed1 = GTK_WIDGET(gtk_builder_get_object(builder, "fixed1"));
 	loginEntry = GTK_WIDGET(gtk_builder_get_object(builder, "loginEntry"));
 	passwordEntry = GTK_WIDGET(gtk_builder_get_object(builder, "passwordEntry"));
-	
+	err = GTK_WIDGET(gtk_builder_get_object(builder, "err"));	
+
 	gtk_widget_show(window);
 	gtk_main();
 	return EXIT_SUCCESS;
@@ -113,7 +118,7 @@ void hideLoginPage(){
 // Waiter's window
 void showWaiterWindow(){
 	hideLoginPage();
-	builder = gtk_builder_new_from_file("waiter.glade");
+	builder = gtk_builder_new_from_file("glade/waiter.glade");
 	waiterWindow = GTK_WIDGET(gtk_builder_get_object(builder, "waiterWindow"));
 	g_signal_connect(waiterWindow, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
@@ -125,15 +130,36 @@ void showWaiterWindow(){
 
 // login's sign in button handler
 void on_sign_clicked(GtkButton *b) {
-	send(sock, "login", strlen("login"), 0);
-	gchar *login_text;
-	gchar *password_text;
-	showWaiterWindow();
-	// login_text = gtk_entry_get_text(GTK_ENTRY(loginEntry));   // get user's login but xz error gives  
- //    password_text = gtk_entry_get_text(GTK_ENTRY(passwordEntry)); // get user's password
+	int read_size;
+	memset(server_message, 0, sizeof(server_message));	
+	g_print("\nlogin: %s\npassword: %s\n", login, password);
+	read_size = send(sock, "0", strlen("0"), 0);
+	printf("\nRecived size of bytes: %d\n", read_size);
+        read_size = send(sock, login, sizeof(login), 0);
+	printf("\nRecived size of bytes: %d\n", read_size);
+	read_size = send(sock, password, sizeof(password), 0);
+	printf("\nRecived size of bytes: %d\n", read_size);
+	recv(sock, server_message, 1 ,0);
+	g_print("\nResived data: %s\n", server_message);
+	if (strcmp(server_message, "1") == 0){
+		gtk_label_set_text(GTK_LABEL(err), "");
+		showWaiterWindow();
+	}else{
+		gtk_label_set_text(GTK_LABEL(err), "Login or Password is incorrect");
+	}
 };
 
 
+void on_loginEntry_changed(GtkEntry *e){
+	memset(login, 0, sizeof(login));
+	strcpy(login, gtk_entry_get_text(e));
+	
+}
+
+void on_passwordEntry_changed(GtkEntry *e){
+	memset(password, 0, sizeof(password));
+	strcpy(password,gtk_entry_get_text(e));
+}
 
 
 // Waiter window handlers

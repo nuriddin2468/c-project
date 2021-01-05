@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <pthread.h>
 
-#define SERV_PORT 8082
+#define SERV_PORT 8085
 
 void *connection_thread(void *);
 
@@ -85,25 +85,38 @@ void *connection_thread(void *socket_desc)
 	int read_size;
 	char message[2000], client_message[1900], *terminate;
 	terminate = "quit";
-	
-        // Send some messages to the client
-        sprintf(message, "[Server]: Connection has been established\n");
-        send(socket, message, strlen(message), 0);
-	
+
 	// Server start
 	while (1) {
 		memset(client_message, 0, sizeof(client_message));
 		printf("recieving message from client.. \n");
-                read_size = recv(socket, client_message, sizeof(client_message), 0);
+                read_size = recv(socket, client_message, 1, 0);
+		printf("\nRecived size of bytes: %d\n", read_size);
 		if (!read_size){
 			break;
 		}
-		else if(strncmp(client_message, "1", strlen("1")) == 0){
-			printf("Nice\n");
+		else if(strncmp(client_message, "0", strlen("0")) == 0){
+			char login[128],password[128];
+			memset(login, 0, sizeof(login));
+			memset(password, 0, sizeof(password));			
+			printf("recieving LOGIN from client.. \n");
+                	recv(socket, login, sizeof(login), 0);
+			printf("recieving PASSWORD from client.. \n");
+			recv(socket, password, sizeof(password), 0);
+			printf("\nlogin: %s\npassoword:%s\n",login,password);
+			if (strcmp(login, "hello") == 0 && strcmp(password, "world") == 0)
+			{
+				printf("\nTrue\n");
+				send(socket, "1", strlen("1"),0);
+                        }else
+			{
+				printf("\nFalse\n");
+				send(socket, "0", strlen("0"),0);
+			}
 		}
 		else{
 			printf("Client [%d] ", socket);
-			printf("BULLSHIT IS: %s\n", client_message);
+			printf("BULLSHIT KEY IS: %s\n", client_message);
 		}
 		
 		/*
