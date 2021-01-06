@@ -103,12 +103,13 @@ void *connection_thread(void *socket_desc)
                 	recv(socket, login, sizeof(login), 0);
 			printf("recieving PASSWORD from client.. \n");
 			recv(socket, password, sizeof(password), 0);
-			printf("\nlogin: %s\npassoword:%s\n",login,password);
+			printf("\nlogin: %s\npassword:%s\n",login,password);
 			if (strcmp(login, "hello") == 0 && strcmp(password, "world") == 0)
 			{
 				printf("\nTrue\n");
 				send(socket, "1", strlen("1"),0);
-                        }else
+            }
+            else
 			{
 				printf("\nFalse\n");
 				send(socket, "0", strlen("0"),0);

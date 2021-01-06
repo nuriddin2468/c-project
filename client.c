@@ -1,5 +1,5 @@
 
-// Client side C/C++ program to demonstrate Socket programming 
+// Client side C program to demonstrate Socket programming 
 #include <stdio.h> 
 #include <sys/socket.h>
 #include <sys/types.h>

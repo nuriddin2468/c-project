@@ -28,6 +28,9 @@ GtkBuilder *builder;
 GtkWidget *err;
 
 GtkWidget *waiterWindow;
+GtkWidget *chefWindow;
+GtkWidget *checkWindow;
+GtkWidget *cashierWindow;
 
 
 char login[128], password[128];
@@ -80,8 +83,6 @@ int main(int argc, char *argv[]){
 
 
 
-
-
 /*
 
 		End of connection
@@ -110,7 +111,7 @@ int main(int argc, char *argv[]){
 	gtk_main();
 	return EXIT_SUCCESS;
 }
-// close window
+// close login window
 void hideLoginPage(){
 	gtk_widget_hide(window);
 }
@@ -127,7 +128,49 @@ void showWaiterWindow(){
 	gtk_widget_show(waiterWindow);
 	gtk_main();
 }
+// Cashier's window
+void showCashierWindow(){
+	hideLoginPage();
+	builder = gtk_builder_new_from_file("glade/cashier.glade");
+	cashierWindow = GTK_WIDGET(gtk_builder_get_object(builder, "cashierWindow"));
+	g_signal_connect(cashierWindow, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
+	gtk_builder_connect_signals(builder, NULL);
+
+	gtk_widget_show(cashierWindow);
+	gtk_main();
+}
+// close cashier window
+void hideCashierWindow(){
+	gtk_widget_hide(cashierWindow);
+}
+void showCheckWindow(){
+	builder = gtk_builder_new_from_file("glade/check.glade");
+	checkWindow = GTK_WIDGET(gtk_builder_get_object(builder, "checkWindow"));
+	g_signal_connect(checkWindow, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+	gtk_builder_connect_signals(builder, NULL);
+
+	gtk_widget_show(checkWindow);
+	gtk_main();
+}
+// Open Checks
+void on_waiterCheckList_clicked(GtkButton *b) {
+	hideCashierWindow();
+	showCheckWindow();
+}
+// Chef's window
+void showChefWindow(){
+	hideLoginPage();
+	builder = gtk_builder_new_from_file("glade/chef.glade");
+	chefWindow = GTK_WIDGET(gtk_builder_get_object(builder, "chefWindow"));
+	g_signal_connect(chefWindow, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+	gtk_builder_connect_signals(builder, NULL);
+
+	gtk_widget_show(chefWindow);
+	gtk_main();
+}
 // login's sign in button handler
 void on_sign_clicked(GtkButton *b) {
 	int read_size;
@@ -143,7 +186,10 @@ void on_sign_clicked(GtkButton *b) {
 	g_print("\nResived data: %s\n", server_message);
 	if (strcmp(server_message, "1") == 0){
 		gtk_label_set_text(GTK_LABEL(err), "");
-		showWaiterWindow();
+		// When DB is connected check and decide which window to open
+		showWaiterWindow();    //Go to waiter's window
+		// showCashierWindow();		//Go to Cashier's window
+		//showChefWindow();
 	}else{
 		gtk_label_set_text(GTK_LABEL(err), "Login or Password is incorrect");
 	}
