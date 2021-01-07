@@ -190,7 +190,7 @@
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="pixbuf">static/fish-chips.jpg</property>
+                            <property name="pixbuf">static/kebab.jpg</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -201,7 +201,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Fish &amp; Chips</property>
+                            <property name="label" translatable="yes">Kebab</property>
                             <attributes>
                               <attribute name="font-desc" value="Sans Bold Italic 15"/>
                               <attribute name="underline" value="True"/>
@@ -257,7 +257,7 @@
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="pixbuf">static/fish-chips.jpg</property>
+                            <property name="pixbuf">static/salad.jpg</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -268,7 +268,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Fish &amp; Chips</property>
+                            <property name="label" translatable="yes">Salad</property>
                             <attributes>
                               <attribute name="font-desc" value="Sans Bold Italic 15"/>
                               <attribute name="underline" value="True"/>
@@ -324,7 +324,7 @@
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="pixbuf">static/fish-chips.jpg</property>
+                            <property name="pixbuf">static/breakfast.jpg</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -335,7 +335,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Fish &amp; Chips</property>
+                            <property name="label" translatable="yes">Breakfast</property>
                             <attributes>
                               <attribute name="font-desc" value="Sans Bold Italic 15"/>
                               <attribute name="underline" value="True"/>
@@ -391,7 +391,7 @@
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="pixbuf">static/fish-chips.jpg</property>
+                            <property name="pixbuf">static/sezar.jpg</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -402,7 +402,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Fish &amp; Chips</property>
+                            <property name="label" translatable="yes">Sezar</property>
                             <attributes>
                               <attribute name="font-desc" value="Sans Bold Italic 15"/>
                               <attribute name="underline" value="True"/>
@@ -458,7 +458,7 @@
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="pixbuf">static/fish-chips.jpg</property>
+                            <property name="pixbuf">static/sushi.jpg</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -469,7 +469,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Fish &amp; Chips</property>
+                            <property name="label" translatable="yes">Sushi</property>
                             <attributes>
                               <attribute name="font-desc" value="Sans Bold Italic 15"/>
                               <attribute name="underline" value="True"/>
@@ -525,7 +525,7 @@
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="pixbuf">static/fish-chips.jpg</property>
+                            <property name="pixbuf">static/burger.jpg</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -536,7 +536,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Fish &amp; Chips</property>
+                            <property name="label" translatable="yes">Burger</property>
                             <attributes>
                               <attribute name="font-desc" value="Sans Bold Italic 15"/>
                               <attribute name="underline" value="True"/>
@@ -592,7 +592,7 @@
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="pixbuf">static/fish-chips.jpg</property>
+                            <property name="pixbuf">static/shrimp.jpg</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -603,7 +603,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Fish &amp; Chips</property>
+                            <property name="label" translatable="yes">Shrimp</property>
                             <attributes>
                               <attribute name="font-desc" value="Sans Bold Italic 15"/>
                               <attribute name="underline" value="True"/>
@@ -659,7 +659,7 @@
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="pixbuf">static/fish-chips.jpg</property>
+                            <property name="pixbuf">static/bistro.jpg</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -670,7 +670,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Fish &amp; Chips</property>
+                            <property name="label" translatable="yes">Bistro</property>
                             <attributes>
                               <attribute name="font-desc" value="Sans Bold Italic 15"/>
                               <attribute name="underline" value="True"/>
