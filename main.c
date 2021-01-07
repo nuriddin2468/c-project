@@ -190,7 +190,13 @@ void on_sign_clicked(GtkButton *b) {
 		showWaiterWindow();    //Go to waiter's window
 		// showCashierWindow();		//Go to Cashier's window
 		//showChefWindow();
-	}else{
+	}else if (strcmp(server_message, "2") == 0){
+		showCashierWindow();
+	}
+	else if (strcmp(server_message, "3") == 0){
+		showChefWindow();
+	}
+	else{
 		gtk_label_set_text(GTK_LABEL(err), "Login or Password is incorrect");
 	}
 };

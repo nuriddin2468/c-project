@@ -104,10 +104,20 @@ void *connection_thread(void *socket_desc)
 			printf("recieving PASSWORD from client.. \n");
 			recv(socket, password, sizeof(password), 0);
 			printf("\nlogin: %s\npassword:%s\n",login,password);
-			if (strcmp(login, "hello") == 0 && strcmp(password, "world") == 0)
+			if (strcmp(login, "waiter") == 0 && strcmp(password, "waiter") == 0)
 			{
-				printf("\nTrue\n");
+				printf("\nEntered Weiter\n");
 				send(socket, "1", strlen("1"),0);
+            }
+            else if (strcmp(login, "cashier") == 0 && strcmp(password, "cashier") == 0)
+			{
+				printf("\nEntered Cashier\n");
+				send(socket, "2", strlen("1"),0);
+            }
+            else if (strcmp(login, "chef") == 0 && strcmp(password, "chef") == 0)
+			{
+				printf("\nEntered Chief\n");
+				send(socket, "3", strlen("1"),0);
             }
             else
 			{
